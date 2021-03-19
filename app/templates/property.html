@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1 class="page-header">Add New Property</h1>
+
+{# Add the appropriate method and enctype attributes to the form tag to allow for file uploads #}
+<form action="{{ url_for('property') }}" method="post" enctype="multipart/form-data">
+  {{ form.csrf_token }}
+
+  {# Add the file upload field as you learnt for Flask-WTF #}
+  
+    <div class="form-group">
+        {{ form.property_title.label }} <br>
+        {{ form.property_title (size=122) }}
+      </div>
+  
+
+  <div class="form-group">
+    {{ form.description.label }} <br>
+    {{ form.description (rows=6, cols=124) }}
+  </div>
+
+  <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+            {{ form.rooms.label }} <br>
+            {{ form.rooms (size=40, placeholder='3') }}
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+            {{ form.bathrooms.label }} <br>
+            {{ form.bathrooms (size=40, placeholder='2') }}
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        {{ form.price.label }} <br>
+        {{ form.price (size=40, placeholder='15,000,00') }}
+        </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        {{ form.property_type.label }} <br>
+        {{ form.property_type }}
+        
+        </div>
+    </div>
+</div>
+  <div class="form-group">
+    {{ form.location.label }} <br>
+    {{ form.location (size=40, placeholder='Ocho Rios, St.Ann')}}
+  </div>
+  <div class="form-group">
+    {{ form.photo.label }} <br>
+    {{ form.photo (placeholder='Browse')}}
+  </div>
+
+  <button type="submit" name="submit" class="btn btn-primary">Add Property</button>
+</form>
+{% endblock %}

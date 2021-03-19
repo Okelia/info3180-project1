@@ -4,9 +4,13 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
+import os
+from app import app, db
+from flask import render_template, request, redirect, url_for, flash
+from app.forms import PropertyForm
+from werkzeug.utils import secure_filename
+from app.models import NewProperty
 
-from app import app
-from flask import render_template, request, redirect, url_for
 
 
 ###
@@ -23,6 +27,23 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+@app.route('/property', methods=['POST', 'GET'])
+def property():
+    myform= PropertyForm()
+    if request.method == 'POST' and myform.validate_on_submit():
+        
+        photo = myform.photo.data
+        filename = secure_filename(photo.filename)
+        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        prop = NewProperty(request.form['property_title'], request.form['description'], request.form['rooms'], request.form['bathrooms'], request.form['price'], request.form['property_type'], request.form['location'], request.form['name'])
+        db.session.add(prop)
+        db.session.commit()
+
+        
+    return render_template('property.html', form=myform)
+
 
 
 ###
