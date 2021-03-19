@@ -33,11 +33,21 @@ def property():
     myform= PropertyForm()
     if request.method == 'POST' and myform.validate_on_submit():
         
+        property_title= myform.property_title.data
+        description=myform.description.data
+        rooms=myform.rooms.data
+        bathrooms=myform.bathrooms.data
+        price=myform.price.data
+        property_type =myform.property_type.data
+        location =myform.location.data
+        photo=myform.photo.data
+
+
         photo = myform.photo.data
         filename = secure_filename(photo.filename)
         photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        prop = NewProperty(request.form['property_title'], request.form['description'], request.form['rooms'], request.form['bathrooms'], request.form['price'], request.form['property_type'], request.form['location'], request.form['name'])
+        prop = NewProperty(request.form['property_title'], request.form['description'], request.form['rooms'], request.form['bathrooms'], request.form['price'], request.form['property_type'], request.form['location'], request.form['photo'])
         db.session.add(prop)
         db.session.commit()
 

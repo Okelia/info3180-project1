@@ -11,10 +11,10 @@ class NewProperty(db.Model):
     price = db.Column(db.String(80))
     property_type = db.Column(db.String(80))
     location = db.Column(db.String(80))
-    name = db.Column(db.String(255))
+    photo = db.Column(db.String(255))
         
 
-    def __init__(self, property_title, description, rooms, bathrooms, price, property_type, location, name):
+    def __init__(self, property_title, description, rooms, bathrooms, price, property_type, location, photo):
         self.property_title = property_title
         self.description = description
         self.rooms = rooms
@@ -22,7 +22,7 @@ class NewProperty(db.Model):
         self.price = price
         self.property_type = property_type
         self.location = location
-        self.name = name
+        self.photo = photo
 
     def get_id(self):
         try:
