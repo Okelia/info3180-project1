@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1 class="page-header">Properties</h1>
+
+        <div class="card">
+            <img class="images" src="{{ url_for('get_image',filename=property.photo)}}">
+            <div class="c-body">
+                <h5>{{property.property_title}}</h5>
+                <span class ="price">{{property.price}}</span>
+                <span class="types">{{property.property_type}}</span>
+
+                <p>{{property.desciption}}</p>
+                <span>{{property.room}} Bedrooms</span>
+                <span>{{property.bathrooms}} Bathrooms</span>
+                <p>{{property.location}}</p>
+                <button type="button" class="btn btn-info">Email Realtor</button>
+            </div>
+        </div>
+  
+{% endblock %}

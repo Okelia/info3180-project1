@@ -10,6 +10,7 @@ from flask import render_template, request, redirect, url_for, flash
 from app.forms import PropertyForm
 from werkzeug.utils import secure_filename
 from app.models import NewProperty
+from flask.helpers import send_from_directory
 
 
 
@@ -26,7 +27,7 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="O'kelia Green")
 
 @app.route('/property', methods=['POST', 'GET'])
 def property():
@@ -40,15 +41,14 @@ def property():
         price=myform.price.data
         property_type =myform.property_type.data
         location =myform.location.data
-        photo=myform.photo.data
-
-
-        photo = myform.photo.data
+        #photo=myform.photo.data
+        
+        photo= request.files['photo']
         filename = secure_filename(photo.filename)
         photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        prop = NewProperty(request.form['property_title'], request.form['description'], request.form['rooms'], request.form['bathrooms'], request.form['price'], request.form['property_type'], request.form['location'], filename)
-        db.session.add(prop)
+        propt = NewProperty(request.form['property_title'], request.form['description'], request.form['rooms'], request.form['bathrooms'], request.form['price'], request.form['property_type'], request.form['location'], filename)
+        db.session.add(propt)
         db.session.commit()
 
         flash('Property successfully added', 'success') 
@@ -57,11 +57,20 @@ def property():
         
     return render_template('property.html', form=myform)
 
+@app.route('/uploads/<filename>')
+def get_image(filename):
+    root_dir = os.getcwd()
+    return send_from_directory(os.path.join(root_dir, app.config['UPLOAD_FOLDER']), filename)
+
 @app.route('/properties')
 def properties():
-    return render_template('properties.html')
+    prop = NewProperty.query.all()
+    return render_template('properties.html', prop=prop)
 
-
+@app.route('/property/<propertyid>')
+def propertyid(propertyid):
+    propertyid = NewProperty.query.get(propertyid)
+    return render_template('propertyid.html', property=propertyid)
 
 
 ###
