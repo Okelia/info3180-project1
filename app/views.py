@@ -69,8 +69,8 @@ def properties():
 
 @app.route('/property/<propertyid>')
 def propertyid(propertyid):
-    propertyid = NewProperty.query.get(propertyid)
-    return render_template('propertyid.html', property=propertyid)
+    x = NewProperty.query.get(propertyid)
+    return render_template('propertyid.html', property=x)
 
 
 ###
