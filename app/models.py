@@ -4,7 +4,7 @@ class NewProperty(db.Model):
     __tablename__ = 'new_properties'
 
     id = db.Column(db.Integer, primary_key=True)
-    property_title = db.Column(db.String(80), unique=True)
+    property_title = db.Column(db.String(80))
     description = db.Column(db.String(255))
     rooms = db.Column(db.String(80))
     bathrooms = db.Column(db.String(80))
