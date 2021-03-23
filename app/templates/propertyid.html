@@ -1,22 +1,29 @@
 {% extends 'base.html' %}
 
 {% block main %}
-
-<h1 class="page-header">Properties</h1>
-
-        <div class="card">
-            <img class="images" src="{{ url_for('get_image',filename=property.photo)}}">
-            <div class="c-body">
-                <h5>{{property.property_title}}</h5>
-                <span class ="price">{{property.price}}</span>
+<div class="containerfordis">
+    <img class="images" src="{{ url_for('get_image',filename=property.photo)}}">
+        <div class="c-body">
+            <h2>{{property.property_title}}</h2>
+            <div class="containerforpandt">
+                <span class ="price">${{property.price}}.00</span>
                 <span class="types">{{property.property_type}}</span>
-
-                <p>{{property.description}}</p>
-                <span>{{property.rooms}} Bedrooms</span>
-                <span>{{property.bathrooms}} Bathrooms</span>
-                <p>{{property.location}}</p>
-                <button type="button" class="btn btn-info">Email Realtor</button>
             </div>
+            <br><p>{{property.description}}</p><br>
+            <div class="containerforbedandbathoom">
+                <div class="bed">
+                    <img class="images" src="{{ url_for('get_image',filename='bed.jpg')}}">
+                    <span class= bed>{{property.rooms}} Bedrooms</span>
+                </div>
+                <div class="bath"> 
+                    <img class="images" src="{{ url_for('get_image',filename='bath.jpg')}}">
+                    <span class= "bath">{{property.bathrooms}} Bathrooms</span>
+                </div>
+            </div>
+                <img class="images" src="{{ url_for('get_image',filename='location.jpg')}}">
+                <p>{{property.location}}</p><br>
+                <button type="button" class="btn btn-info">Email Realtor</button>
         </div>
+</div>
   
 {% endblock %}

@@ -3,31 +3,108 @@
 }
 body {
     padding-top: 50px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 400px 400px 400px;
-    padding: 10px;
-}
-.grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
-.images{
-    width: auto;
-    height: auto;
-}
-.card-body p{
-    text-align: center;
-    border-radius: 50%;
-    
-    
+    background-color: rgb(226, 245, 242);
 }
 .btn{
-    background-color: #3ad4ca;
-    border: #3ad4ca;
+    background-color: #2a9b93;
+    border: #2a9b93;
+    
+}
+.image{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row: auto auto auto;
+    gap: 15px;
+    margin-bottom: 80px;
+    
+    
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.lol{
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+}
+.zzz{
+    margin-bottom: 200px;
+    background-color: rgb(255, 255, 255);
+}
+.zzz .location .images{
+    height: 60px;
     width: auto;
+}
+.outofname{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+}
+.l{
+    display: inline;
+}
+.p{
+    grid-row: 1;
+    grid-column: 1;
+    background-color: #960af3;
+    margin: 10px;
+    color: azure;
+    border-radius: 45%;
+    text-align: center;
+}
+.tired{
+    grid-row: 2;
+    grid-column: 1,2;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.containerfordis{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    background-color: rgba(255, 255, 255, 0.842);
+    
+}
+.images{
+    grid-column: 1;
+    size: 70px;
+    padding: 15px;
+}
+.c-body{
+    grid-column: 2;
+    padding: 15px;
+}
+.containerforpandt{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.containerforpandt .price{
+    background-color: #960af3;
+    margin: 10px;
+    color: azure;
+    border-radius: 45%;
+    text-align: center;
+}
+.containerforpandt .types{
+    background-color: #c72060;
+    margin: 10px;
+    color: azure;
+    border-radius: 45%;
+    text-align: center;
+}
+.containerforbedandbathoom{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.containerforbedandbathoom .bed{
+    grid-column: 1;
+}
+.containerforbedandbathoom .bath{
+    grid-column: 2;
+}
+.c-body .images{
+    height: 70px;
+    width: auto;
+}
+.c-body p{
+    display: inline;
 }

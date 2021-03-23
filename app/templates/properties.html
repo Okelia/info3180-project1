@@ -3,26 +3,23 @@
 {% block main %}
 <h1 class="page-header">Properties</h1>
 
-
-{%for p in prop %}
-  <div class="grid-container">
-    <div class="grid-item">
-      <div class="card">
-        <img class="images" src="{{url_for('get_image', filename=p.photo)}}">
-        <div class="card-body">
-          <h2>{{p.property_title}}</h2>
-          <h5>{{p.location}}</h5>
-          <p>${{p.price}}</p>
-          <a href="{{url_for('propertyid', propertyid=p.id)}}" class="btn btn-primary">View property</a>
-        </div>
-      </div>
-
-    </div>
-   
-
-  </div>
-  
-{% endfor %}
-
-
-{% endblock %}
+<div class="image">
+    {% for p in prop %}
+          <div class="zzz">
+            <img class="img" src="{{ url_for('get_image', filename=p.photo) }}">
+            <h2>{{p.property_title}}</h2>
+            <div class="location"> 
+              <img class="images" src="{{ url_for('get_image',filename='location.jpg')}}">
+              <h5 class= "l">{{p.location}}</h5> <br>
+            </div>
+            <div class="outofname">
+              <p class="p">${{p.price}}.00</p>
+              <div class="tired">
+                <a href="{{url_for('propertyid', propertyid=p.id)}}" class="btn btn-primary">View property</a>
+              </div>
+            </div>
+          </div>  
+            
+    {%endfor%}
+</div>
+{%endblock%}
